@@ -4,31 +4,40 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JFrame;
 
-public class EmployeeM extends JFrame implements ActionListener {
+public class EmployeeM implements ActionListener {
+
+    JFrame fme;
     private Container r;
     private Font f;
     JLabel title, fn,ln,id,salary;
     JTextField ff,ll,i,s;
-    JFrame fme;
+
     JScrollPane sp;
     JTable tab; JButton adds,delt,update,clear,exit;
     private DefaultTableModel dm;
     String[] cols={"First Name","Last Name","Employee ID","Salary"};
     String[] rows=new String[4];
     EmployeeM(){
+        JFrame fme=new JFrame("Database Frame");
+
         init();
     }
     public void init(){
-        fme=new JFrame("Database Frame");
+       // fme=new JFrame("Database Frame");
         //fme.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+       // fme.setBounds(200,200,750,650);
+       // fme.setTitle("Employee Management System");
+
+        fme=new JFrame("Database Frame");
+        // fme.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         fme.setBounds(200,200,750,650);
         fme.setTitle("Employee Management System");
-        r=this.getContentPane();
+        r=fme.getContentPane();
         r.setLayout(null);
         r.setBackground(Color.cyan);
         f=new Font("Cambria",Font.ITALIC, 13);
-
         // label
         title=new JLabel("Employee Management Label");
         title.setFont(f);
@@ -106,6 +115,7 @@ public class EmployeeM extends JFrame implements ActionListener {
         update.addActionListener(this);
         clear.addActionListener(this);
         exit.addActionListener(this);
+        fme.setVisible(true);
 
 
 
@@ -148,7 +158,8 @@ public class EmployeeM extends JFrame implements ActionListener {
 
  } if(e.getSource()==exit){
             JOptionPane.showMessageDialog(fme, "Exited");
-            fme.dispose();
+            fme.dispose();// inside method init , another method is invoking
+            // local variable resolving
             new Login();
 
 
