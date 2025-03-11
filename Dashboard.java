@@ -43,7 +43,7 @@ class Dashboard implements ActionListener {
             }else if(button.getText().equals("Database")){
                 frame.dispose();
             EmployeeM ef=new EmployeeM();
-                ef.setVisible(true);
+            
             }
         }
     }
